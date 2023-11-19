@@ -79,3 +79,92 @@ final Map<String, dynamic> pokemon = {
     }
   };
 ```
+
+### Set, Iterables, List
+
+Son estructuras de datos parecidas al Array.
+
+- toSet() → Convierte una lista en un set (sin elementos repetidos)
+- toList() → Convierte en una lista.
+- .where → Recorre los elementos de la lista o el iterable.
+
+```dart
+void main() {
+
+ final numbers = [1,2,3,4,5, 5 ,5,5,23,1,13];
+ 
+  print("List original ${ numbers.toSet().toList() }"); 
+  print("Length ${numbers.length}");
+  print("Index 0: ${numbers[0]}");
+  print("First: ${numbers.first}");
+  print("Reverse: ${numbers.reversed}");
+  
+  final reversedNumbers = numbers.reversed;
+  print("Iterable: $reversedNumbers ");
+  print("List: ${ reversedNumbers.toList()}");
+  print("List: ${ reversedNumbers.toSet()}");
+  
+  final numbersGreaterThan5 = numbers.where((int num) {
+    return num > 5;
+  });
+  
+  print(">5: $numbersGreaterThan5");
+  print(">5 set: ${numbersGreaterThan5.toSet()}");
+}
+```
+
+### Funciones
+
+Definidas fuera de la función principal **main.**
+
+Pueden ser funciones flechas o regulares, llevar parámetros con el tipo de datos incluido y parámetros opcionales dentro de llaves cuadradas.
+
+```dart
+void main() {
+  print(greetEveryone());
+  
+  print(addTwoNumbers(2,3));
+}
+
+String greetEveryone() => "Hello everyone!";
+
+int addTwoNumbers(int a, int b) => a + b;
+
+int addTwoNumbersOptional (int a, [int b = 0]) {
+//   b = b ?? 0;
+//   b ??= 0;
+  return a + b;
+}
+```
+
+### Parámetros con nombre.
+
+Van dentro de llaves. Esta las hace parámetros opcionales automáticamente, podemos darle un valor por default o aplicar **required**.
+
+```dart
+String greetPerson({required String name, String message = "Hola"}) {
+  return "$message $name";
+}
+```
+
+### Clases
+
+El 95% de Dart son clases.
+
+```dart
+void main() {
+   final wolverine = new Hero("Logan", "Regeneración");
+}
+
+class Hero {
+  String name;
+  String power;
+  
+  Hero(this.name, this.power);
+  
+//   Hero( String pName, String pPower ) 
+//     : name = pName,
+//       power = pPower;
+  
+}
+```
